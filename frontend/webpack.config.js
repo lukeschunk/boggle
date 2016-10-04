@@ -2,8 +2,6 @@
 
 const path = require('path');
 const webpack = require('webpack');
-//TODO get commons and different entry points working
-// const commonsPlugin = new webpack.optimize.CommonsChunkPlugin('common.js');
 const merge = require('webpack-merge');
 const validate = require('webpack-validator');
 const jQuery = new webpack.ProvidePlugin({
@@ -48,14 +46,14 @@ let dev = {
         path.resolve('./index.js')
     ],
     output: {
-        publicPath: 'http://localhost:3000/app/build/'
+        publicPath: 'http://localhost:3000/build/'
     },
     plugins: [new webpack.HotModuleReplacementPlugin(), jQuery],
     module: {
         loaders: [
             {
                 test: /\.jsx?$/,
-                exclude: /(node_modules|__build__)/,
+                exclude: /(node_modules|build)/,
 
                 loaders: ['react-hot', 'babel']
             }
@@ -68,14 +66,14 @@ let dev = {
 let prod = {
     entry: path.resolve('./index.js'),
     output: {
-        publicPath: './app/build/'
+        publicPath: './build/'
     },
     plugins:[jQuery],
     module: {
         loaders: [
             {
                 test: /\.jsx?$/,
-                exclude: /(node_modules|__build__)/,
+                exclude: /(node_modules|build)/,
 
                 loader: "babel",
             }

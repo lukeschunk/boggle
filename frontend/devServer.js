@@ -20,5 +20,5 @@ server.listen(3000, 'localhost', function (err) {
     console.log('Listening at http://localhost:3000/');
 });
 server.use('/', function (req, res) {
-    res.sendFile(path.join(__dirname + './index.html'));
+    res.sendFile(path.join(__dirname + '/index.html'));
 });
