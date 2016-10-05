@@ -1,6 +1,5 @@
 @import url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css');
 
-
 .footer {
   text-align: center;
   border-top: solid 1px #bbbdc0;
@@ -8,4 +7,22 @@
   position: absolute;
   bottom: 0;
   width: 100%;
+}
+
+.board {
+  height: 258px;
+  width: 258px;
+  margin: auto;
+  border: solid 3px;
+}
+
+.tile {
+  box-shadow: inset 0 0 10px #000000;
+  background: navajowhite;
+  text-align: center;
+  vertical-align: center;
+}
+
+#id{
+  margin:auto;
 }
