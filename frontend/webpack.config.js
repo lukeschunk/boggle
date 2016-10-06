@@ -27,8 +27,13 @@ const common = {
                 loader: "file"
             },
             {
-                test:/\.jpe?g$|\.gif$|\.png$/,
-                loader:"file"
+                test: /\.jpe?g$|\.gif$|\.png$/,
+                loader: "file"
+            },
+            {
+                test: /\.json$/,
+                loader: "json-loader"
+
             }
         ]
     },
@@ -68,7 +73,7 @@ let prod = {
     output: {
         publicPath: './build/'
     },
-    plugins:[jQuery],
+    plugins: [jQuery],
     module: {
         loaders: [
             {
