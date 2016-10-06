@@ -11,7 +11,7 @@ class Boggle extends React.Component {
 
     componentWillMount() {
         this.generateBoard();
-        this.generateTrie();
+        this.getWordList();
     };
 
     componentDidMount() {
@@ -27,11 +27,6 @@ class Boggle extends React.Component {
 
     };
 
-    generateTrie() {
-        this.setState({Trie: new Trie()}, ()=> {
-            this.state.Trie.addArr(dict);
-        });
-    }
 
     generateBoard() {
         let chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
@@ -48,16 +43,23 @@ class Boggle extends React.Component {
     };
 
     getWordList() {
-        console.log(this.state.Trie);
-        this.state.tiles.forEach(row=> {
-            row.forEach(tile=> {
-                this.checkAdjacent(tile, 0, [tile.key[0] + tile.key[2]]);
-            })
-        })
 
+        this.setState({Trie: new Trie()}, ()=> {
+            this.state.Trie.addArr(dict);
+            this.setState({possibleWords: []},()=>{
+                this.state.tiles.forEach(row=> {
+                    row.forEach(tile=> {
+                        // console.log(tile.props.letter);
+                        this.checkAdjacent(tile, tile.props.letter, [tile.key[0] + tile.key[2]]);
+                    })
+                })
+                }
+
+            );
+        });
     };
 
-    checkAdjacent(tile, length, chain) {
+    checkAdjacent(tile, word, chain) {
         //1  2  3  4
         //5  6  7  8
         //9  10 11 12
@@ -86,14 +88,28 @@ class Boggle extends React.Component {
                     continue;
                 }
 
-                //get letter and push node to chain
-                let neighbor = this.state.tiles[dy][dx].props.letter;
+                let neighbor = this.state.tiles[dy][dx];
+                word = word += neighbor.props.letter;
+                let check = this.state.Trie.search(word);
+                console.log(word);
+                // console.log(typeof check === 'string');
+                if (typeof check === 'string') {
+                    //we found a word, add to dictionary and check down path
+                    this.state.possibleWords.push(check);
+                    chain.push(String(dy) + dx);
+                    this.checkAdjacent(neighbor, word, chain);
+                    console.log('here')
+                } else if (check) {
+                    //keep checking adjacent paths
+                    chain.push(String(dy) + dx);
+                    this.checkAdjacent(neighbor, word, chain);
+                    console.log('here2')
 
-                // if()
+                } else {
+                    //word is a deadend, quit looking at that path
+                    console.log(this.state.possibleWords)
 
-                chain.push(String(dy) + dx);
-                // console.log(neighbor)
-
+                }
             }
         }
     };

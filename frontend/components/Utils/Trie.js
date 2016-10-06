@@ -1,5 +1,6 @@
 `use strict`;
 
+//based off of this: https://codereview.stackexchange.com/questions/25359/simple-trie-implementation-in-javascript/25377#25377?newreg=fc2794af46054d6b8374bbd21f5bb2aa
 class Trie {
 
     constructor(key){
