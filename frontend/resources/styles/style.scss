@@ -10,8 +10,8 @@
 }
 
 .board {
-  height: 258px;
-  width: 258px;
+  height: 256px;
+  width: 256px;
   margin: auto;
   border: solid 3px;
 }
@@ -23,6 +23,26 @@
   vertical-align: center;
 }
 
-#id{
-  margin:auto;
+#id {
+  margin: auto;
+}
+
+#input {
+  //margin:auto;
+  width: 256px;
+  display: flex;
+justify-content: center;
+}
+
+.incorrect {
+  box-shadow: 0 0 15px red !important;
+
+}
+
+.correct {
+  box-shadow: 0 0 15px green !important;
+}
+
+.found {
+  box-shadow: 0 0 15px yellow !important;
 }

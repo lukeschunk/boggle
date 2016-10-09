@@ -10,6 +10,7 @@ require('./resources/styles/style.scss');
 import 'jquery';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min';
+// import 'bootstrap/dist/css/bootstrap.min.css.map';
 
 ReactDOM.render((
     <Router history={browserHistory}>
