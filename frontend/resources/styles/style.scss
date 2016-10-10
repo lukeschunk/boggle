@@ -23,15 +23,15 @@
   vertical-align: center;
 }
 
-#id {
-  margin: auto;
+#input-container {
+  margin: 10px auto;
 }
 
 #input {
-  //margin:auto;
+  margin:0 auto;
   width: 256px;
-  display: flex;
-justify-content: center;
+//  display: flex;
+//justify-content: center;
 }
 
 .incorrect {

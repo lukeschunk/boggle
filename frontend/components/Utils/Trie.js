@@ -31,18 +31,21 @@ class Trie {
         let length = name.length;
         let i;
         for (i = 0; i < length; i++) {
+            // console.log(node[name[i]]);
             if(!(node = node[name[i]])){
                 break;
             }
         }
+
         let ret;
         if(i === length){
             if(node.name){
-                return node.name
+                ret = node.name
             } else {
                 ret = true;
             }
         } else{
+            // debugger;
             ret = false;
         }
 

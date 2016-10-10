@@ -8,8 +8,8 @@ class BoggleService {
     constructor(tiles, input) {
         this.trie          = new Trie();
         this.possibleWords = {};
-        this.tiles    = tiles;
-        this.input    = input;
+        this.tiles         = tiles;
+        this.input         = input;
     };
 
     getWordList() {
@@ -17,13 +17,13 @@ class BoggleService {
         this.tiles.forEach(row=> {
             row.forEach(tile=> {
                 this.checkAdjacent(tile, tile.props.letter, [tile.key[0] + tile.key[2]]);
-            })
+            });
+            console.log(this.possibleWords);
         })
 
     };
 
     checkAdjacent(tile, word, chain) {
-
         let y = Number(tile.key[0]);
         let x = Number(tile.key[2]);
 
@@ -42,21 +42,20 @@ class BoggleService {
                 if (dx < 0 || dx > 3 || chain.indexOf(String(dy) + dx) != -1) {
                     continue;
                 }
-
                 let neighbor = this.tiles[dy][dx];
-                word         = word += neighbor.props.letter;
-                let check = this.trie.search(word);
+                let tempWord = word + neighbor.props.letter;
+                let check = this.trie.search(tempWord);
                 if (typeof check === 'string') {
                     //we found a word, add to dictionary and check down path
                     this.possibleWords[check] = false;
-                    chain.push(String(dy) + dx);
-                    this.checkAdjacent(neighbor, word, chain);
+                    let tempChain             = chain.slice(0);
+                    tempChain.push(String(dy) + dx);
+                    this.checkAdjacent(neighbor, tempWord, tempChain);
                 } else if (check) {
                     //keep checking adjacent paths
-                    chain.push(String(dy) + dx);
-                    this.checkAdjacent(neighbor, word, chain);
-                } else {
-                    //word is a deadend, quit looking at that path
+                    let tempChain             = chain.slice(0);
+                    tempChain.push(String(dy) + dx);
+                    this.checkAdjacent(neighbor, tempWord, tempChain);
                 }
             }
         }
@@ -87,7 +86,6 @@ class BoggleService {
             setTimeout(() => {
                 this.input.classList.remove('incorrect');
             }, 500);
-
         }
     };
 }

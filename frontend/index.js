@@ -7,9 +7,9 @@ import App from './components/App';
 import Boggle from './components/Boggle'
 
 require('./resources/styles/style.scss');
-import 'jquery';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.min';
+require( 'bootstrap/dist/css/bootstrap.css');
+require('bootstrap/dist/js/bootstrap.min');
+import $ from 'jquery';
 // import 'bootstrap/dist/css/bootstrap.min.css.map';
 
 ReactDOM.render((

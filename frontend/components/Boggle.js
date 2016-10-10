@@ -25,6 +25,12 @@ class Boggle extends React.Component {
             });
     };
 
+    componentDidUpdate(){
+        // console.log(this.state.tiles);
+        console.log(this.state.service.possibleWords);
+        console.log();
+    }
+
     generateBoard() {
         let chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
         let tiles = [];
@@ -45,7 +51,7 @@ class Boggle extends React.Component {
                 <div className="board">
                     {this.state.tiles}
                 </div>
-                <div className="input-group">
+                <div className="input-group" id="input-container">
                     <input id='input' type="text" className="form-control" placeholder="Word"/>
                 </div>
             </div>
