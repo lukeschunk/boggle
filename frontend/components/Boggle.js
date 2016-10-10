@@ -42,7 +42,11 @@ class Boggle extends React.Component {
             }
         }
         this.setState({tiles: tiles});
+    };
 
+    newBoard(){
+        this.generateBoard();
+        this.state.service.getWordList(this.state.tiles);
     };
 
     render() {
@@ -51,8 +55,11 @@ class Boggle extends React.Component {
                 <div className="board">
                     {this.state.tiles}
                 </div>
-                <div className="input-group" id="input-container">
+                <div className="input-group input-container" id="">
                     <input id='input' type="text" className="form-control" placeholder="Word"/>
+                </div>
+                <div className="input-container">
+                    <button className="btn btn-default" onClick={this.newBoard.bind(this)}>Boggle!</button>
                 </div>
             </div>
         )

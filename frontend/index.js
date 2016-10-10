@@ -9,8 +9,6 @@ import Boggle from './components/Boggle'
 require('./resources/styles/style.scss');
 require( 'bootstrap/dist/css/bootstrap.css');
 require('bootstrap/dist/js/bootstrap.min');
-import $ from 'jquery';
-// import 'bootstrap/dist/css/bootstrap.min.css.map';
 
 ReactDOM.render((
     <Router history={browserHistory}>

@@ -7,20 +7,22 @@ class BoggleService {
 
     constructor(tiles, input) {
         this.trie          = new Trie();
+        this.trie.addArr(dict);
         this.possibleWords = {};
         this.tiles         = tiles;
         this.input         = input;
     };
 
-    getWordList() {
-        this.trie.addArr(dict);
+    getWordList(tiles) {
+        if (tiles) {
+            this.tiles = tiles;
+        }
+        this.possibleWords = {};
         this.tiles.forEach(row=> {
             row.forEach(tile=> {
                 this.checkAdjacent(tile, tile.props.letter, [tile.key[0] + tile.key[2]]);
             });
-            console.log(this.possibleWords);
         })
-
     };
 
     checkAdjacent(tile, word, chain) {
