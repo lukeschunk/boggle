@@ -1,5 +1,5 @@
 `use strict`;
-// hey i like this import syntax good job
+// this is a better comment
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {IndexRoute, browserHistory, Router, Route} from 'react-router';
